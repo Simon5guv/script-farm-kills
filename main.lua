@@ -21,132 +21,114 @@ end
 
 local function andar(lista)
 	local humanoid = getHumanoid()
-	local root = getRoot()
 
 	for i = 2, #lista do
-		local p = lista[i]
-		local destino = Vector3.new(p.X, root.Position.Y, p.Z)
-		humanoid:MoveTo(destino)
+		humanoid:MoveTo(lista[i])
 		humanoid.MoveToFinished:Wait()
 	end
 end
 
--- HOSPITAL
-local hospital_pos1 = {
-	Vector3.new(426.03,0,-3980.61),
-	Vector3.new(432.33,0,-3984.76),
-	Vector3.new(441.16,0,-3993.37),
-	Vector3.new(430.49,0,-4012.54),
-	Vector3.new(428.81,0,-4038.22),
-}
+local mapas = {
 
-local hospital_pos2 = {
-	Vector3.new(427.66,0,-4037.81),
-	Vector3.new(430.95,0,-4027.87),
-	Vector3.new(434.53,0,-4011.54),
-	Vector3.new(439.31,0,-3997.67),
-	Vector3.new(440.82,0,-3986.39),
-	Vector3.new(428.97,0,-3979.97),
-	Vector3.new(426.43,0,-3980.02),
-}
+	hospital = {
+		pos1 = {
+			Vector3.new(426.03,39.36,-3980.61),
+			Vector3.new(432.33,39.36,-3984.76),
+			Vector3.new(441.16,39.36,-3993.37),
+			Vector3.new(430.49,39.36,-4012.54),
+			Vector3.new(428.81,39.36,-4038.22),
+		},
+		pos2 = {
+			Vector3.new(427.66,39.36,-4037.81),
+			Vector3.new(430.95,39.36,-4027.87),
+			Vector3.new(434.53,39.36,-4011.54),
+			Vector3.new(440.82,39.36,-3986.39),
+			Vector3.new(426.43,39.36,-3980.02),
+		}
+	},
 
--- FABRICA
-local fabrica_pos1 = {
-	Vector3.new(402.52,0,-3990.98),
-	Vector3.new(409.24,0,-3998.21),
-	Vector3.new(417.51,0,-4001.60),
-	Vector3.new(421.32,0,-3998.31),
-	Vector3.new(425.79,0,-3998.99),
-	Vector3.new(431.36,0,-4000.01),
-	Vector3.new(432.28,0,-4008.12),
-	Vector3.new(433.46,0,-4013.88),
-	Vector3.new(433.44,0,-4021.57),
-	Vector3.new(433.31,0,-4029.60),
-	Vector3.new(436.00,0,-4035.23),
-	Vector3.new(442.61,0,-4038.80),
-	Vector3.new(448.97,0,-4038.41),
-	Vector3.new(456.90,0,-4039.13),
-	Vector3.new(460.98,0,-4045.14),
-	Vector3.new(459.80,0,-4054.73),
-	Vector3.new(467.51,0,-4061.29),
-}
+	-- 🔥 FABRICA ATUALIZADA
+	fabrica = {
+		pos1 = {
+			Vector3.new(402.30, 48.23, -3990.80),
+			Vector3.new(466.80, 46.38, -3984.70),
+			Vector3.new(455.07, 48.88, -4054.34),
+			Vector3.new(466.63, 46.38, -4060.61),
+		},
+		pos2 = {
+			Vector3.new(467.30, 46.38, -4061.00),
+			Vector3.new(461.81, 48.98, -4040.72),
+			Vector3.new(466.97, 46.38, -3987.72),
+			Vector3.new(402.75, 48.23, -3990.71),
+		}
+	},
 
-local fabrica_pos2 = {
-	Vector3.new(467.30,0,-4061.00),
-	Vector3.new(465.84,0,-4056.69),
-	Vector3.new(462.19,0,-4050.10),
-	Vector3.new(461.75,0,-4041.90),
-	Vector3.new(462.62,0,-4033.44),
-	Vector3.new(463.48,0,-4019.91),
-	Vector3.new(465.64,0,-4008.30),
-	Vector3.new(466.66,0,-4000.10),
-	Vector3.new(467.65,0,-3992.16),
-	Vector3.new(464.53,0,-3986.31),
-	Vector3.new(458.15,0,-3983.41),
-	Vector3.new(448.00,0,-3984.57),
-	Vector3.new(433.37,0,-3985.48),
-	Vector3.new(414.89,0,-3989.31),
-	Vector3.new(402.73,0,-3990.98),
-}
+	casa = {
+		pos1 = {
+			Vector3.new(434.94,51.09,-3956.39),
+			Vector3.new(450.38,51.09,-3960.72),
+			Vector3.new(457.99,54.29,-3970.18),
+			Vector3.new(460.87,54.29,-4033.87),
+			Vector3.new(441.12,51.89,-4039.23),
+		},
+		pos2 = {
+			Vector3.new(440.94,51.89,-4038.39),
+			Vector3.new(456.38,54.29,-4035.34),
+			Vector3.new(461.42,54.29,-4008.68),
+			Vector3.new(453.92,54.29,-3969.20),
+			Vector3.new(435.18,51.09,-3956.64),
+		}
+	},
 
--- CASA
-local casa_pos1 = {
-	Vector3.new(434.94,0,-3956.39),
-	Vector3.new(437.71,0,-3955.98),
-	Vector3.new(443.71,0,-3954.67),
-	Vector3.new(450.38,0,-3960.72),
-	Vector3.new(457.99,0,-3970.18),
-	Vector3.new(461.36,0,-4003.11),
-	Vector3.new(460.82,0,-4020.81),
-	Vector3.new(460.87,0,-4033.87),
-	Vector3.new(454.86,0,-4036.93),
-	Vector3.new(445.48,0,-4037.21),
-	Vector3.new(441.12,0,-4039.23),
-}
+	nsoficee = {
+		pos1 = {
+			Vector3.new(441.71,52.16,-4020.30),
+			Vector3.new(435.26,52.16,-4018.94),
+			Vector3.new(431.25,52.16,-4010.74),
+			Vector3.new(430.44,52.16,-3960.05),
+			Vector3.new(440.41,52.16,-3947.91),
+		},
+		pos2 = {
+			Vector3.new(440.92,52.16,-3948.50),
+			Vector3.new(431.70,52.16,-3956.77),
+			Vector3.new(430.02,52.16,-3988.08),
+			Vector3.new(433.77,52.16,-4019.63),
+			Vector3.new(442.42,52.16,-4019.54),
+		}
+	},
 
-local casa_pos2 = {
-	Vector3.new(440.94,0,-4038.39),
-	Vector3.new(446.31,0,-4037.45),
-	Vector3.new(456.38,0,-4035.34),
-	Vector3.new(460.68,0,-4025.73),
-	Vector3.new(461.42,0,-4008.68),
-	Vector3.new(459.48,0,-3989.35),
-	Vector3.new(453.92,0,-3969.20),
-	Vector3.new(450.25,0,-3960.84),
-	Vector3.new(444.27,0,-3956.95),
-	Vector3.new(439.86,0,-3953.85),
-	Vector3.new(435.18,0,-3956.64),
+	mansao = {
+		pos1 = {
+			Vector3.new(384.11,45.81,-4006.40),
+			Vector3.new(394.75,45.81,-4022.75),
+			Vector3.new(424.02,45.80,-4023.10),
+			Vector3.new(450.89,45.81,-4020.03),
+			Vector3.new(453.29,45.81,-4006.65),
+		},
+		pos2 = {
+			Vector3.new(452.91,45.81,-4006.40),
+			Vector3.new(453.13,45.81,-4018.90),
+			Vector3.new(414.24,45.80,-4021.74),
+			Vector3.new(396.00,45.81,-4022.96),
+			Vector3.new(383.90,45.81,-4006.80),
+		}
+	},
+
 }
 
 task.wait(1)
 
 local pos = getRoot().Position
 
-if bate(pos, hospital_pos1[1]) then
-	print("hospital_pos1")
-	andar(hospital_pos1)
+for nome, mapa in pairs(mapas) do
+	if bate(pos, mapa.pos1[1]) then
+		print("Mapa:", nome, "pos1")
+		andar(mapa.pos1)
+		break
 
-elseif bate(pos, hospital_pos2[1]) then
-	print("hospital_pos2")
-	andar(hospital_pos2)
-
-elseif bate(pos, fabrica_pos1[1]) then
-	print("fabrica_pos1")
-	andar(fabrica_pos1)
-
-elseif bate(pos, fabrica_pos2[1]) then
-	print("fabrica_pos2")
-	andar(fabrica_pos2)
-
-elseif bate(pos, casa_pos1[1]) then
-	print("casa_pos1")
-	andar(casa_pos1)
-
-elseif bate(pos, casa_pos2[1]) then
-	print("casa_pos2")
-	andar(casa_pos2)
-
-else
-	print("nenhuma rota bateu")
-	print("X:", pos.X, "Z:", pos.Z)
+	elseif bate(pos, mapa.pos2[1]) then
+		print("Mapa:", nome, "pos2")
+		andar(mapa.pos2)
+		break
+	end
 end
