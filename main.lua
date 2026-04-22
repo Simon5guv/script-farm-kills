@@ -16,7 +16,7 @@ local TOLERANCE = 10
 
 local function bate(pos, spawn)
 	return math.abs(pos.X - spawn.X) <= TOLERANCE
-	   and math.abs(pos.Z - spawn.Z) <= TOLERANCE
+	   and math.abs(pos.Z - spawn.Z) <= TOLERANCE
 end
 
 local function andar(lista)
